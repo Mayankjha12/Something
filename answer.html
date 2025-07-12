@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Answer Question - StackIt</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .nav-bar {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .nav-bar a {
+      text-decoration: none;
+      font-size: 20px;
+      color: #000;
+    }
+
+    .nav-icons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    #notiCount {
+      background: red;
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 50%;
+      font-size: 12px;
+      margin-left: 5px;
+    }
+
+    .logo {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      max-width: 600px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .question h3 {
+      margin: 0 0 10px 0;
+    }
+
+    .question p {
+      margin: 5px 0;
+    }
+
+    .vote {
+      display: flex;
+      gap: 15px;
+      font-size: 24px;
+      margin-top: 12px;
+    }
+
+    .vote span {
+      cursor: pointer;
+    }
+
+    .answer-form {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      height: 120px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav-bar">
+    <a href="home.html" title="Go to Home">🏠</a>
+  </div>
+
+  <div class="nav-icons">
+    <a href="#">🔔<span id="notiCount">3</span></a>
+  </div>
+
+  <div class="logo">🗨️ QA</div>
+
+  <div class="question">
+    <h3>How to center a div using CSS Flexbox?</h3>
+    <p>I am trying to center a div both vertically and horizontally inside a parent div. What is the simplest way using Flexbox?</p>
+    <div class="vote">
+      <span onclick="vote('up')">👍</span>
+      <span onclick="vote('down')">👎</span>
+      <button onclick="markAccepted()">✅ Accept</button>
+    </div>
+  </div>
+
+  <div class="answer-form">
+    <form id="answerForm">
+      <textarea id="answerText" placeholder="Write your answer here..." required></textarea>
+      <button type="submit">Post Answer</button>
+    </form>
+  </div>
+
+  <script>
+    function vote(type) {
+      alert(type === 'up' ? 'Upvoted!' : 'Downvoted!');
+    }
+
+    function markAccepted() {
+      alert("✅ Answer marked as accepted!");
+    }
+
+    document.getElementById('answerForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const answer = document.getElementById('answerText').value.trim();
+      if(answer){
+        alert("✅ Answer submitted:\n\n" + answer);
+        this.reset();
+      } else {
+        alert("❗ Please write an answer before submitting.");
+      }
+    });
+  </script>
+
+</body>
+</html>
